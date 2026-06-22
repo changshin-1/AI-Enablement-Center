@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Enablement Center · 오픈 안내</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0C0E14;
+    --ink-soft:#151926;
+    --paper:#F6F4EE;
+    --paper-card:#FFFFFF;
+    --indigo:#5B5BF0;
+    --cyan:#23D3EE;
+    --signal:#FF6A45;
+    --line:#E4E0D6;
+    --text-dark:#13151C;
+    --text-mute:#5C616E;
+    --text-onink:#E7E9F0;
+    --text-onink-mute:#9AA0B2;
+    --radius:20px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Pretendard',system-ui,-apple-system,sans-serif;
+    background:var(--paper);
+    color:var(--text-dark);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'Space Mono',ui-monospace,monospace}
+  a{color:inherit;text-decoration:none}
+
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+
+  /* ---------- eyebrow label ---------- */
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--text-mute);display:inline-flex;align-items:center;gap:9px;
+  }
+  .eyebrow::before{content:"//";color:var(--signal);font-weight:700}
+  .hero .eyebrow{color:#E7E9F0;font-size:13px}
+  .hero .eyebrow b{color:var(--signal);font-weight:700}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(12,14,20,.82);backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
+  .brand{display:flex;align-items:center;gap:11px;color:var(--text-onink);font-weight:700;font-size:16px;flex:none}
+  .nav{display:flex;align-items:center;gap:6px;margin-left:auto}
+  .nav a{font-size:13.5px;font-weight:600;color:var(--text-onink-mute);padding:8px 13px;border-radius:100px;transition:color .15s,background .15s}
+  .nav a:hover{color:var(--text-onink);background:rgba(255,255,255,.07)}
+  @media(max-width:880px){.nav{display:none}}
+  .logo-mark{
+    width:30px;height:30px;border-radius:9px;flex:none;
+    background:linear-gradient(135deg,var(--indigo),var(--cyan));
+    position:relative;
+  }
+  .logo-mark::after{
+    content:"";position:absolute;inset:0;margin:auto;width:9px;height:9px;border-radius:50%;
+    background:var(--ink);box-shadow:0 0 0 3px rgba(12,14,20,.9);
+  }
+  .live-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;
+    color:var(--text-onink);border:1px solid rgba(255,255,255,.15);
+    padding:6px 12px;border-radius:100px;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:#FF6A45;position:relative}
+  .dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid #FF6A45;animation:pulse 2s ease-out infinite}
+  @keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.8);opacity:0}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(900px 500px at 78% -10%,rgba(91,91,240,.55),transparent 60%),
+      radial-gradient(700px 500px at 8% 110%,rgba(35,211,238,.28),transparent 55%),
+      var(--ink);
+    color:var(--text-onink);
+    padding:84px 0 96px;position:relative;overflow:hidden;
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .hero h1{
+    font-size:clamp(22px,4.6vw,58px);line-height:1.08;font-weight:800;
+    letter-spacing:-.02em;margin:22px 0 24px;white-space:nowrap;
+  }
+  .hero h1 .accent{
+    background:linear-gradient(100deg,var(--cyan),var(--indigo));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{font-size:clamp(16px,2.1vw,20px);color:var(--text-onink-mute);max-width:none;line-height:1.6}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px;
+    padding:14px 24px;border-radius:100px;border:1px solid transparent;transition:transform .18s,box-shadow .18s,background .18s;
+  }
+  .btn-primary{background:linear-gradient(100deg,var(--indigo),#7A6BFF);color:#fff;box-shadow:0 10px 30px -8px rgba(91,91,240,.7)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -10px rgba(91,91,240,.9)}
+  .btn-ghost{border-color:rgba(255,255,255,.22);color:var(--text-onink)}
+  .btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+  .btn .arr{transition:transform .18s}
+  .btn:hover .arr{transform:translateX(3px)}
+
+  /* coming soon card */
+  .card.soon{background:var(--paper);border:1.5px dashed #cfcabb;box-shadow:none;cursor:default}
+  .card.soon:hover{transform:none;box-shadow:none;border-color:#cfcabb}
+  .card.soon h3,.card.soon p{color:var(--text-mute)}
+  .ic-soon{background:#E9E6DE} .ic-soon svg{stroke:#8C8576}
+  .soon-badge{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:700;color:#8C8576;
+    border:1px solid #cfcabb;border-radius:100px;padding:5px 12px;align-self:center;white-space:nowrap}
+  .nav a.soon-nav{color:#6B7186}
+  .nav a.soon-nav::after{content:"준비중";font-family:'Space Mono',monospace;font-size:9px;color:var(--signal);
+    margin-left:5px;vertical-align:super;letter-spacing:.05em}
+
+  /* ---------- section heading ---------- */
+  .sec{padding:80px 0}
+  .sec-head{margin-bottom:40px}
+  .sec-head h2{font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.02em;margin-top:12px}
+  .sec-head p{color:var(--text-mute);margin-top:10px;max-width:52ch}
+
+  /* ---------- bento hub grid ---------- */
+  .hub{display:grid;grid-template-columns:1.5fr 1fr;gap:18px}
+  .card{
+    background:var(--paper-card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px;display:flex;flex-direction:column;position:relative;overflow:hidden;
+    transition:transform .2s,box-shadow .2s,border-color .2s;
+  }
+  .card:hover{border-color:var(--line)}
+  .card .tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--text-mute);text-transform:uppercase}
+  .card h3{font-size:23px;font-weight:800;margin:14px 0 8px;letter-spacing:-.01em}
+  .card p{color:var(--text-mute);font-size:15px;flex:1}
+  .card .go{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14px;margin-top:20px;color:var(--indigo)}
+  .card .go .arr{transition:transform .18s}
+  .card:hover .go .arr{transform:translateX(4px)}
+  .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin-bottom:4px}
+  .ic svg{width:24px;height:24px;stroke-width:1.9}
+
+  /* feature card (agent gallery) */
+  .feature{grid-row:1 / span 2;background:linear-gradient(160deg,#171B2B,#0C0E14);color:var(--text-onink);border-color:#23283c}
+  .feature:hover{border-color:#39405c}
+  .feature .tag{color:var(--cyan)}
+  .feature p{color:var(--text-onink-mute);font-size:16px}
+  .feature h3{font-size:30px}
+  .feature .go{color:var(--cyan)}
+  .feature .ic{background:linear-gradient(135deg,var(--indigo),var(--cyan))}
+  .feature .ic svg{stroke:#fff}
+  .gallery-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .chip{font-size:12px;font-family:'Space Mono',monospace;border:1px solid rgba(255,255,255,.16);color:var(--text-onink-mute);padding:5px 11px;border-radius:100px}
+
+  .ic-event{background:rgba(35,211,238,.14)} .ic-event svg{stroke:#0DAFC7}
+  .ic-lab{background:rgba(91,91,240,.12)} .ic-lab svg{stroke:var(--indigo)}
+  .ic-ax{background:rgba(255,106,69,.13)} .ic-ax svg{stroke:var(--signal)}
+  .tags-light{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .tags-light span{font-size:12px;font-family:'Space Mono',monospace;border:1px solid var(--line);color:var(--text-mute);padding:5px 11px;border-radius:100px}
+  .wide{grid-column:1 / -1;flex-direction:row;align-items:flex-start;gap:24px}
+  .wide .body{flex:1}
+  .wide .ic{margin-bottom:0;margin-top:4px}
+  .wide .go{margin-top:6px;align-self:center}
+
+  /* ---------- start steps ---------- */
+  .start{background:var(--ink);color:var(--text-onink)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+  .step{border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:26px;position:relative}
+  .step .n{font-family:'Space Mono',monospace;font-size:13px;color:var(--cyan);letter-spacing:.1em}
+  .step h4{font-size:18px;font-weight:700;margin:14px 0 8px}
+  .step p{color:var(--text-onink-mute);font-size:14px}
+  .start .sec-head h2{color:#fff}
+  .start .eyebrow{color:var(--text-onink-mute)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:var(--text-onink);padding:56px 0 40px;border-top:1px solid rgba(255,255,255,.08)}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-start}
+  .foot-col h5{font-size:13px;font-family:'Space Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--text-onink-mute);margin-bottom:14px}
+  .foot-col a{display:block;color:var(--text-onink);font-size:15px;margin-bottom:9px;opacity:.85;transition:opacity .15s}
+  .foot-col a:hover{opacity:1;color:var(--cyan)}
+  .foot-bottom{margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--text-onink-mute);font-size:13px}
+
+  /* ---------- flip carousel ---------- */
+  .carousel{margin-top:4px}
+  .cstage{position:relative;overflow:hidden;border-radius:22px;padding:46px 50px;
+    background:linear-gradient(160deg,#171B2B,#0B0D14);border:1px solid #23283c}
+  .counter{position:absolute;top:30px;right:34px;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.12em;color:#5a6178;z-index:2}
+  .counter span{color:#cfd3e0}
+  .cinner{position:relative;transition:height .45s cubic-bezier(.6,0,.2,1)}
+  .cslide{position:absolute;top:0;left:0;width:100%;opacity:0;transform:translateX(36px);
+    transition:opacity .45s ease,transform .5s cubic-bezier(.6,0,.2,1);pointer-events:none}
+  .cslide.active{opacity:1;transform:translateX(0);pointer-events:auto}
+  .cslide .ctag{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;font-weight:700;text-transform:uppercase}
+  .cslide h3{font-size:clamp(25px,3vw,33px);font-weight:800;color:#fff;margin:16px 0 14px;letter-spacing:-.01em}
+  .cslide p{font-size:16px;color:var(--text-onink-mute);max-width:62ch;line-height:1.65;margin:0}
+  .cslide .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+  .soonpill{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.06em;
+    color:#cfd3e0;border:1px solid #3a4060;border-radius:100px;padding:4px 12px;margin-left:12px;vertical-align:middle}
+  .cnav{display:flex;align-items:center;justify-content:space-between;margin-top:24px}
+  .dots{display:flex;gap:9px}
+  .dot2{width:9px;height:9px;border-radius:50%;background:#cfcabb;border:none;cursor:pointer;padding:0;transition:width .25s,background .25s}
+  .dot2.on{background:var(--indigo);width:28px;border-radius:5px}
+  .arrows{display:flex;gap:11px}
+  .cbtn{width:50px;height:50px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;
+    display:grid;place-items:center;transition:transform .18s,border-color .18s,background .18s}
+  .cbtn:hover{border-color:#c9c4b6;transform:translateY(-2px)}
+  .cbtn svg{width:21px;height:21px;stroke:#16181F;stroke-width:2;fill:none}
+  .cbtn.next{background:var(--indigo);border-color:var(--indigo)}
+  .cbtn.next svg{stroke:#fff}
+  .cbtn.next:hover{background:#4a4ae0;border-color:#4a4ae0}
+  /* course lineup (education slide) */
+  .courses-wrap{margin-top:24px;border-top:1px solid #262b3d;padding-top:22px}
+  .courses-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;font-weight:700;color:#6B7186;text-transform:uppercase;margin-bottom:16px}
+  .courses{display:grid;grid-template-columns:1fr 1fr;gap:18px 34px}
+  .course-head{display:flex;align-items:center;gap:9px;margin-bottom:5px;flex-wrap:wrap}
+  .course-name{font-size:15.5px;font-weight:700;color:#fff}
+  .period{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#9b9bff;border:1px solid #3a4060;border-radius:100px;padding:3px 9px;white-space:nowrap}
+  .period.key{background:var(--indigo);border-color:var(--indigo);color:#fff}
+  .cslide .course-desc{font-size:13px;color:#9AA0B2;line-height:1.5;margin:0;max-width:none}
+
+  /* ---------- reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:820px){
+    .hub{grid-template-columns:1fr}
+    .feature{grid-row:auto}
+    .steps{grid-template-columns:1fr}
+    .wide{flex-direction:column;align-items:flex-start}
+    .sec{padding:60px 0}
+    .cstage{padding:32px 26px}
+    .counter{top:22px;right:24px}
+    .courses{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .dot::after{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">AI Enablement Center</div>
+    <span class="live-pill"><span class="dot"></span> 7월 1일 오픈</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">AI ENABLEMENT CENTER · <b>7월 1일 오픈 예정</b></span>
+    <h1>사내 AI의 모든 정보가 <span class="accent">모이는 곳</span></h1>
+    <p class="lead">행사·교육 안내부터 직접 만든 Agent 공유, 기술 지원과 라이선스 신청까지<br>AI 활성화팀과 관련된 모든 활동을 이 페이지에서 시작하세요.</p>
+  </div>
+</header>
+
+<!-- HUB GRID -->
+<section class="sec" id="hub">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">WHAT'S INSIDE</span>
+      <h2>이런 공간들을 준비하고 있어요</h2>
+      <p>7월 1일 오픈을 앞두고 미리 소개할게요. 화살표로 한 곳씩 넘겨보세요.</p>
+    </div>
+
+    <div class="carousel reveal">
+      <div class="cstage">
+        <span class="counter"><span id="cnum">01</span> / 05</span>
+        <div class="cinner" id="cinner">
+
+          <div class="cslide active">
+            <span class="ctag" style="color:var(--cyan)">FEATURED · 사내 전시</span>
+            <h3>Agent Gallery</h3>
+            <p>동료들이 직접 만든 Copilot Studio Agent, Power Apps, Power Automate Flow를 공유·배포하고 서로 가져다 쓰는 사내 전시 공간입니다.</p>
+            <div class="chips">
+              <span class="chip">Copilot Studio</span><span class="chip">Power Apps</span>
+              <span class="chip">Power Automate</span><span class="chip">+ 더보기</span>
+            </div>
+          </div>
+
+          <div class="cslide">
+            <span class="ctag" style="color:#3FD0E6">EVENTS</span>
+            <h3>행사 안내</h3>
+            <p>다가오는 행사 일정을 확인하고, 행사 관련 궁금한 점은 Q&amp;A로 물어보세요.</p>
+          </div>
+
+          <div class="cslide">
+            <span class="ctag" style="color:#8C8CFF">EDUCATION</span>
+            <h3>AI Enablement Lab</h3>
+            <p>사내 AI 교육을 신청하고, 진행 중인 교육 현황을 한눈에 확인하세요.</p>
+            <div class="chips">
+              <span class="chip">바이브 코딩</span><span class="chip">Working Group</span>
+              <span class="chip">DSA</span><span class="chip">Agent 만들기</span>
+              <span class="chip">Power Automate</span>
+            </div>
+          </div>
+
+          <div class="cslide">
+            <span class="ctag" style="color:var(--signal)">SUPPORT &amp; REQUEST</span>
+            <h3>AX Together</h3>
+            <p>AI 활성화팀에 기술 지원을 요청하고, 사내 AI Agent 개발 현황까지 한곳에서 확인하세요.</p>
+            <div class="chips">
+              <span class="chip">기술 지원 요청</span><span class="chip">Teams 앱 구독</span>
+              <span class="chip">AI 라이선스 신청</span><span class="chip">Agent 개발 현황</span>
+            </div>
+          </div>
+
+          <div class="cslide">
+            <span class="ctag" style="color:#9AA0B2">COMING SOON</span>
+            <h3>AI Trend <span class="soonpill">추후 오픈</span></h3>
+            <p>AI 활성화팀이 직접 골라 전하는 AI 관련 최신 뉴스와 트렌드를 모아 보여드립니다. 추후 오픈 예정입니다.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cnav">
+        <div class="dots" id="dots"></div>
+        <div class="arrows">
+          <button class="cbtn prev" id="cprev" aria-label="이전"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cbtn next" id="cnext" aria-label="다음"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay=(i%4*0.06)+'s';
+    io.observe(el);
+  });
+
+  // flip carousel
+  (function(){
+    const slides=[...document.querySelectorAll('.cslide')];
+    if(!slides.length) return;
+    const inner=document.getElementById('cinner');
+    const dotsWrap=document.getElementById('dots');
+    const numEl=document.getElementById('cnum');
+    let idx=0;
+
+    slides.forEach((s,i)=>{
+      const b=document.createElement('button');
+      b.className='dot2'+(i===0?' on':'');
+      b.setAttribute('aria-label',(i+1)+'번째 공간');
+      b.addEventListener('click',()=>go(i));
+      dotsWrap.appendChild(b);
+    });
+    const dots=[...dotsWrap.children];
+
+    function setHeight(){ inner.style.height=slides[idx].offsetHeight+'px'; }
+    function update(){
+      numEl.textContent=String(idx+1).padStart(2,'0');
+      dots.forEach((d,i)=>d.classList.toggle('on',i===idx));
+    }
+    function go(n,forceDir){
+      n=(n+slides.length)%slides.length;
+      if(n===idx) return;
+      const dir=forceDir||(n>idx?1:-1);
+      const cur=slides[idx], nxt=slides[n];
+      nxt.style.transition='none';
+      nxt.style.transform='translateX('+(dir*40)+'px)';
+      nxt.style.opacity='0';
+      void nxt.offsetWidth;
+      nxt.style.transition='';
+      cur.classList.remove('active');
+      cur.style.transform='translateX('+(-dir*40)+'px)';
+      cur.style.opacity='0';
+      nxt.classList.add('active');
+      nxt.style.transform='translateX(0)';
+      nxt.style.opacity='1';
+      idx=n;
+      update(); setHeight();
+    }
+
+    document.getElementById('cnext').addEventListener('click',()=>go(idx+1,1));
+    document.getElementById('cprev').addEventListener('click',()=>go(idx-1,-1));
+    window.addEventListener('keydown',(e)=>{
+      if(e.key==='ArrowRight') go(idx+1,1);
+      if(e.key==='ArrowLeft') go(idx-1,-1);
+    });
+    window.addEventListener('resize', setHeight);
+    setHeight();
+    window.addEventListener('load', setHeight);
+    if(document.fonts && document.fonts.ready){ document.fonts.ready.then(setHeight); }
+  })();
+</script>
+</body>
+</html>
