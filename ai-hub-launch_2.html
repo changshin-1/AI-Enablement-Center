@@ -197,7 +197,7 @@
   .cslide.active{opacity:1;transform:translateX(0);pointer-events:auto}
   .cslide .ctag{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;font-weight:700;text-transform:uppercase}
   .cslide h3{font-size:clamp(25px,3vw,33px);font-weight:800;color:#fff;margin:16px 0 14px;letter-spacing:-.01em}
-  .cslide p{font-size:16px;color:var(--text-onink-mute);max-width:62ch;line-height:1.65;margin:0}
+  .cslide p{font-size:16px;color:var(--text-onink-mute);max-width:none;line-height:1.65;margin:0}
   .cslide .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
   .soonpill{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.06em;
     color:#cfd3e0;border:1px solid #3a4060;border-radius:100px;padding:4px 12px;margin-left:12px;vertical-align:middle}
@@ -245,14 +245,6 @@
 </head>
 <body>
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="wrap">
-    <div class="brand">AI Enablement Center</div>
-    <span class="live-pill"><span class="dot"></span> 7월 1일 오픈</span>
-  </div>
-</div>
-
 <!-- HERO -->
 <header class="hero">
   <div class="wrap">
@@ -277,46 +269,47 @@
         <div class="cinner" id="cinner">
 
           <div class="cslide active">
-            <span class="ctag" style="color:var(--cyan)">FEATURED · 사내 전시</span>
-            <h3>Agent Gallery</h3>
-            <p>동료들이 직접 만든 Copilot Studio Agent, Power Apps, Power Automate Flow를 공유·배포하고 서로 가져다 쓰는 사내 전시 공간입니다.</p>
+            <span class="ctag" style="color:#8C8CFF">EDUCATION</span>
+            <h3>AI Enablement Lab</h3>
+            <p>사내 AI 교육의 전 과정을 담은 공간입니다. <br> 전체 교육 커리큘럼을 둘러보고, 원하는 클래스를 수강 신청하고, 듣고 싶은 교육이나 강의 관련 질문을 남길 수 있습니다.</p>
             <div class="chips">
-              <span class="chip">Copilot Studio</span><span class="chip">Power Apps</span>
-              <span class="chip">Power Automate</span><span class="chip">+ 더보기</span>
+              <span class="chip">교육 커리큘럼</span><span class="chip">수강 신청</span>
+              <span class="chip">교육 Q&amp;A</span>
             </div>
           </div>
 
           <div class="cslide">
-            <span class="ctag" style="color:#3FD0E6">EVENTS</span>
-            <h3>행사 안내</h3>
-            <p>다가오는 행사 일정을 확인하고, 행사 관련 궁금한 점은 Q&amp;A로 물어보세요.</p>
-          </div>
-
-          <div class="cslide">
-            <span class="ctag" style="color:#8C8CFF">EDUCATION</span>
-            <h3>AI Enablement Lab</h3>
-            <p>사내 AI 교육을 신청하고, 진행 중인 교육 현황을 한눈에 확인하세요.</p>
+            <span class="ctag" style="color:var(--cyan)">FEATURED · 사내 전시</span>
+            <h3>Agent Gallery</h3>
+            <p>사내 개발자들이 Copilot Studio로 만든 Agent, Power Apps로 만든 App, Power Automate로 만든 Flow를 전시하고 공유하는 공간입니다. <br> 누구나 동료들의 결과물을 직접 사용해볼 수 있고, 잘 만든 사례에서 아이디어를 얻어 내 업무에도 적용할 수 있습니다.</p>
             <div class="chips">
-              <span class="chip">바이브 코딩</span><span class="chip">Working Group</span>
-              <span class="chip">DSA</span><span class="chip">Agent 만들기</span>
-              <span class="chip">Power Automate</span>
+              <span class="chip">Agent · Copilot Studio</span><span class="chip">App · Power Apps</span>
+              <span class="chip">Flow · Power Automate</span>
             </div>
           </div>
 
           <div class="cslide">
             <span class="ctag" style="color:var(--signal)">SUPPORT &amp; REQUEST</span>
             <h3>AX Together</h3>
-            <p>AI 활성화팀에 기술 지원을 요청하고, 사내 AI Agent 개발 현황까지 한곳에서 확인하세요.</p>
+            <p>AI 활성화팀에 보내는 모든 요청을 한곳에 모으고, 접수된 AX 빌드업 프로젝트를 컨설팅·개발·배포까지 단계별로 관리하는 공간입니다.</p>
             <div class="chips">
-              <span class="chip">기술 지원 요청</span><span class="chip">Teams 앱 구독</span>
-              <span class="chip">AI 라이선스 신청</span><span class="chip">Agent 개발 현황</span>
+              <span class="chip">AI 라이선스 신청</span><span class="chip">Teams 유료 앱 신청</span>
+              <span class="chip">기술 지원 요청</span><span class="chip">AX 빌드업</span>
+              <span class="chip">AX Projects 관리</span>
             </div>
           </div>
 
           <div class="cslide">
+            <span class="ctag" style="color:#3FD0E6">EVENTS</span>
+            <h3>Events</h3>
+            <p>다가오는 AI 활성화팀의 행사 일정을 확인하고, 행사 관련 궁금한 점은 Q&amp;A로 물어보세요.</p>
+          </div>
+
+          <div class="cslide">
             <span class="ctag" style="color:#9AA0B2">COMING SOON</span>
-            <h3>AI Trend <span class="soonpill">추후 오픈</span></h3>
-            <p>AI 활성화팀이 직접 골라 전하는 AI 관련 최신 뉴스와 트렌드를 모아 보여드립니다. 추후 오픈 예정입니다.</p>
+            <h3>AI Trend <span class="soonpill">준비 중</span></h3>
+            <p>AI 활성화팀이 직접 골라 전하는 AI 관련 최신 뉴스와 트렌드를 모아 보여드립니다. <br>
+		향후 오픈 예정입니다.</p>
           </div>
 
         </div>
