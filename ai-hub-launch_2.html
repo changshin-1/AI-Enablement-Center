@@ -155,7 +155,7 @@
   .feature .ic{background:linear-gradient(135deg,var(--indigo),var(--cyan))}
   .feature .ic svg{stroke:#fff}
   .gallery-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-  .chip{font-size:12px;font-family:'Space Mono',monospace;border:1px solid rgba(255,255,255,.16);color:var(--text-onink-mute);padding:5px 11px;border-radius:100px}
+  .chip{font-size:13.5px;font-family:'Space Mono',monospace;border:1px solid rgba(255,255,255,.16);color:var(--text-onink-mute);padding:5px 11px;border-radius:100px}
 
   .ic-event{background:rgba(35,211,238,.14)} .ic-event svg{stroke:#0DAFC7}
   .ic-lab{background:rgba(91,91,240,.12)} .ic-lab svg{stroke:var(--indigo)}
@@ -195,9 +195,9 @@
   .cslide{position:absolute;top:0;left:0;width:100%;opacity:0;transform:translateX(36px);
     transition:opacity .45s ease,transform .5s cubic-bezier(.6,0,.2,1);pointer-events:none}
   .cslide.active{opacity:1;transform:translateX(0);pointer-events:auto}
-  .cslide .ctag{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;font-weight:700;text-transform:uppercase}
-  .cslide h3{font-size:clamp(25px,3vw,33px);font-weight:800;color:#fff;margin:16px 0 14px;letter-spacing:-.01em}
-  .cslide p{font-size:16px;color:var(--text-onink-mute);max-width:none;line-height:1.65;margin:0}
+  .cslide .ctag{display:inline-block;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.16em;font-weight:700;text-transform:uppercase}
+  .cslide h3{font-size:clamp(28px,3.4vw,38px);font-weight:800;color:#fff;margin:16px 0 14px;letter-spacing:-.01em}
+  .cslide p{font-size:18px;color:var(--text-onink-mute);max-width:none;line-height:1.65;margin:0}
   .cslide .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
   .soonpill{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.06em;
     color:#cfd3e0;border:1px solid #3a4060;border-radius:100px;padding:4px 12px;margin-left:12px;vertical-align:middle}
@@ -222,6 +222,28 @@
   .period{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#9b9bff;border:1px solid #3a4060;border-radius:100px;padding:3px 9px;white-space:nowrap}
   .period.key{background:var(--indigo);border-color:var(--indigo);color:#fff}
   .cslide .course-desc{font-size:13px;color:#9AA0B2;line-height:1.5;margin:0;max-width:none}
+
+  /* clickable chip accordion */
+  .cslide .chips-hint{font-size:15px;font-weight:600;color:#FFC75A;margin:22px 0 14px;max-width:none;display:inline-flex;align-items:center;gap:7px}
+  .cslide .chips-hint::before{content:"👇";font-size:15px}
+  .chips-toggle .chip{background:transparent;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:border-color .15s,color .15s,background .15s}
+  .chips-toggle .chip:hover{border-color:#5b6080;color:#fff}
+  .chips-toggle .chip.on{background:rgba(91,91,240,.2);border-color:var(--indigo);color:#fff}
+  .chips-toggle .cv{font-size:9px;line-height:1;transition:transform .25s;opacity:.65}
+  .chips-toggle .chip.on .cv{transform:rotate(180deg);opacity:1}
+  .acc-item{display:none;margin-top:22px;padding-top:22px;border-top:1px solid #262b3d}
+  .acc-item.show{display:block}
+  .cslide .acc-intro{font-size:16.5px;color:#c2c6d4;line-height:1.6;margin:0;max-width:none}
+  .acc-courses{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:13px}
+  .acc-courses li{font-size:15.5px;color:#9AA0B2;line-height:1.55}
+  .acc-courses li b{color:#fff;font-weight:700}
+  .acc-courses .num{display:inline-block;min-width:20px;font-family:'Space Mono',monospace;color:#8C8CFF;font-weight:700}
+  .acc-soon{color:#8C8576;font-style:italic}
+  .cslide .group-label{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#6B7186;font-weight:700;margin:18px 0 11px}
+  .ax-sep{border-top:1px solid #262b3d;margin-top:22px}
+  .chips-toggle .chip-alt{border-color:rgba(63,208,230,.45);color:#bfeef6}
+  .chips-toggle .chip-alt:hover{border-color:#3FD0E6;color:#fff}
+  .chips-toggle .chip-alt.on{background:rgba(63,208,230,.2);border-color:#3FD0E6;color:#fff}
 
   /* ---------- reveal animation ---------- */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
@@ -248,7 +270,7 @@
 <!-- HERO -->
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">AI ENABLEMENT CENTER · <b>7월 1일 오픈</b></span>
+    <span class="eyebrow">AI ENABLEMENT CENTER · <b>7월 1일 오픈 </b></span>
     <h1>사내 AI의 모든 정보가 <span class="accent">모이는 곳</span></h1>
     <p class="lead">행사·교육 안내부터 직접 만든 Agent 공유, 기술 지원과 라이선스 신청까지<br>AI 활성화팀과 관련된 모든 활동을 이 페이지에서 시작하세요.</p>
   </div>
@@ -272,10 +294,30 @@
             <span class="ctag" style="color:#8C8CFF">EDUCATION</span>
             <h3>AI Enablement Lab</h3>
             <p>사내 AI 교육의 전 과정을 담은 공간입니다. <br> 전체 교육 커리큘럼을 둘러보고, 원하는 클래스를 수강 신청하고, 듣고 싶은 교육이나 강의 관련 질문을 남길 수 있습니다.</p>
-            <div class="chips">
-              <span class="chip">교육 커리큘럼</span><span class="chip">수강 신청</span>
-              <span class="chip">교육 Q&amp;A</span>
-		<span class="chip">AI Awareness</span>
+            <p class="chips-hint">아래 버튼을 누르면 각 페이지 상세 설명을 볼 수 있어요.</p>
+            <div class="chips chips-toggle">
+              <button class="chip" data-acc="cur">교육 커리큘럼 <span class="cv">▾</span></button><button class="chip" data-acc="apply">수강 신청 <span class="cv">▾</span></button>
+              <button class="chip" data-acc="qna">교육 Q&amp;A <span class="cv">▾</span></button><button class="chip" data-acc="aware">AI Awareness <span class="cv">▾</span></button>
+            </div>
+            <div class="acc-panel">
+              <div class="acc-item" data-acc="cur">
+                <p class="acc-intro">크게 4가지 교육이 단계별로 진행됩니다.</p>
+                <ul class="acc-courses">
+                  <li><span class="num">1.</span><b>Agent Builder in Copilot</b> — M365 Copilot Chat의 기본 에이전트 만들기 기능으로, 내 OneDrive·SharePoint 자료를 활용해 업무에 바로 쓸 수 있는 에이전트를 손쉽게 만드는 강의.</li>
+                  <li><span class="num">2.</span><b>Copilot Studio</b> — Copilot Studio로 단순 문서 기반을 넘어, 회사 업무 프로세스에 맞게 다양한 데이터·시스템을 연계한 확장형 업무 자동화 에이전트를 만드는 강의.</li>
+                  <li><span class="num">3.</span><b>Power Automate</b> — 반복되는 단순 작업을 자동화로 전환하고, 흩어진 시스템 사이의 데이터 흐름을 연결합니다. 교육이 끝나는 시점에는 End-to-End 자동화 흐름을 직접 설계할 수 있게 됩니다.</li>
+                  <li><span class="num">4.</span><b>AgentGo</b> — <span class="acc-soon">추후 오픈 예정.</span></li>
+                </ul>
+              </div>
+              <div class="acc-item" data-acc="apply">
+                <p class="acc-intro">원하는 클래스를 골라 바로 예약·신청하는 페이지입니다.</p>
+              </div>
+              <div class="acc-item" data-acc="qna">
+                <p class="acc-intro">듣고 싶은 교육이나 강의 관련 질문을 자유롭게 남기는 공간입니다.</p>
+              </div>
+              <div class="acc-item" data-acc="aware">
+                <p class="acc-intro">AI에 대한 이해와 활용 감각을 높이는 콘텐츠를 제공하는 공간입니다. <span class="acc-soon">추후 오픈 예정입니다.</span></p>
+              </div>
             </div>
           </div>
 
@@ -293,10 +335,18 @@
             <span class="ctag" style="color:var(--signal)">SUPPORT &amp; REQUEST</span>
             <h3>AX Together</h3>
             <p>AI 활성화팀에 보내는 모든 요청을 한곳에 모으고, 접수된 AX 빌드업 프로젝트를 컨설팅·개발·배포까지 단계별로 관리하는 공간입니다.</p>
-            <div class="chips">
-              <span class="chip">AI 라이선스 신청</span><span class="chip">Teams 유료 앱 신청</span>
-              <span class="chip">기술 지원 요청</span><span class="chip">AX 빌드업</span>
-              <span class="chip">AX Projects 관리</span>
+            <p class="chips-hint">아래 버튼을 누르면 각 항목의 상세 설명을 볼 수 있어요.</p>
+            <div class="chips chips-toggle">
+              <button class="chip" data-acc="lic">AI 라이선스 신청 <span class="cv">▾</span></button><button class="chip" data-acc="teams">Teams 유료 앱 신청 <span class="cv">▾</span></button>
+              <button class="chip" data-acc="support">기술 지원 요청 <span class="cv">▾</span></button><button class="chip" data-acc="build">AX 빌드업 <span class="cv">▾</span></button>
+              <button class="chip chip-alt" data-acc="projects">AX Projects Hub <span class="cv">▾</span></button>
+            </div>
+            <div class="acc-panel">
+              <div class="acc-item" data-acc="lic"><p class="acc-intro">AI 라이선스 사용을 신청하는 페이지입니다.</p></div>
+              <div class="acc-item" data-acc="teams"><p class="acc-intro">Teams 확장 앱 중 유료 앱을 사용하기 위해 신청하는 페이지입니다.</p></div>
+              <div class="acc-item" data-acc="support"><p class="acc-intro">M365 앱이나 AI 활성화팀이 제공하는 플랫폼을 사용하다가 기술 지원·문의가 필요할 때 남기면, 담당자가 확인해 지원해 드리는 페이지입니다.</p></div>
+              <div class="acc-item" data-acc="build"><p class="acc-intro">문제와 해결 아이디어는 있지만 어떤 AI 툴로 어떻게 만들지 막막할 때, 최적의 구현 로드맵을 함께 설계해 드립니다.</p></div>
+              <div class="acc-item" data-acc="projects"><p class="acc-intro">AI 활성화팀에 접수된 AI Agent 프로젝트의 진행 현황을 확인하고 관리하는 종합 플랫폼입니다.</p></div>
             </div>
           </div>
 
@@ -383,6 +433,25 @@
     setHeight();
     window.addEventListener('load', setHeight);
     if(document.fonts && document.fonts.ready){ document.fonts.ready.then(setHeight); }
+  })();
+
+  // chip accordion (Lab slide)
+  (function(){
+    const chips=document.querySelectorAll('.chips-toggle .chip');
+    const items=document.querySelectorAll('.acc-item');
+    if(!chips.length) return;
+    let openKey=null;
+    chips.forEach(c=>{
+      c.addEventListener('click',()=>{
+        const key=c.getAttribute('data-acc');
+        const closing=(openKey===key);
+        chips.forEach(x=>x.classList.toggle('on', !closing && x.getAttribute('data-acc')===key));
+        items.forEach(it=>it.classList.toggle('show', !closing && it.getAttribute('data-acc')===key));
+        openKey=closing?null:key;
+        // let the carousel recompute the active slide height
+        window.dispatchEvent(new Event('resize'));
+      });
+    });
   })();
 </script>
 </body>
