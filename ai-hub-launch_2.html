@@ -49,7 +49,7 @@
   .sec-head h2{font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.02em;margin-top:12px}
   .sec-head p{color:var(--text-mute);margin-top:10px;max-width:52ch}
 
-  .chip{font-size:13.5px;font-family:'Space Mono',monospace;border:1px solid rgba(255,255,255,.16);color:var(--text-onink-mute);padding:5px 11px;border-radius:100px}
+  .chip{font-size:13.5px;font-family:'Pretendard',system-ui,sans-serif;font-weight:600;border:1px solid rgba(255,255,255,.16);color:var(--text-onink-mute);padding:5px 11px;border-radius:100px}
 
   .carousel{margin-top:4px}
   .cstage{position:relative;overflow:hidden;border-radius:22px;padding:46px 50px;
@@ -96,6 +96,8 @@
   .chips-toggle .chip-alt:hover{border-color:#3FD0E6;color:#fff}
   .chips-toggle .chip-alt.on{background:rgba(63,208,230,.2);border-color:#3FD0E6;color:#fff}
 
+  .open-badge{display:inline-block;font-family:'Pretendard',system-ui,sans-serif;font-size:13px;font-weight:700;letter-spacing:0;
+    color:#0C0E14;background:#FFC75A;border-radius:100px;padding:4px 12px;margin-left:12px;vertical-align:middle;}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
 
@@ -158,7 +160,7 @@
 
           <div class="cslide">
             <span class="ctag" style="color:var(--cyan)">FEATURED · 사내 전시</span>
-            <h3>Agent Gallery</h3>
+            <h3>Agent Gallery<span class="open-badge">금주 금요일 오픈</span></h3>
             <p>사내 개발자들이 Copilot Studio로 만든 Agent, Power Apps로 만든 App, Power Automate로 만든 Flow를 전시하고 공유하는 공간입니다. <br> 누구나 동료들의 결과물을 직접 사용해볼 수 있고, 잘 만든 사례에서 아이디어를 얻어 내 업무에도 적용할 수 있습니다.</p>
             <div class="chips">
               <span class="chip">Agent · Copilot Studio</span><span class="chip">App · Power Apps</span>
@@ -168,7 +170,7 @@
 
           <div class="cslide">
             <span class="ctag" style="color:var(--signal)">SUPPORT &amp; REQUEST</span>
-            <h3>AX Together</h3>
+            <h3>AX Together<span class="open-badge">금주 금요일 오픈</span></h3>
             <p>AI 활성화팀에 보내는 모든 요청을 한곳에 모으고, 접수된 AX 빌드업 프로젝트를 컨설팅·개발·배포까지 단계별로 관리하는 공간입니다.</p>
             <p class="chips-hint">아래 버튼을 누르면 각 항목의 상세 설명을 볼 수 있어요.</p>
             <div class="chips chips-toggle">
