@@ -98,6 +98,19 @@
 
   .open-badge{display:inline-block;font-family:'Pretendard',system-ui,sans-serif;font-size:13px;font-weight:700;letter-spacing:0;
     color:#0C0E14;background:#FFC75A;border-radius:100px;padding:4px 12px;margin-left:12px;vertical-align:middle;}
+  .recruit-strip{max-width:1140px;margin:0 auto 8px;padding:0 28px;}
+  .recruit-inner{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+    background:linear-gradient(100deg,#5B5BF0,#7A6BFF);border-radius:16px;
+    padding:18px 24px;box-shadow:0 12px 30px -12px rgba(91,91,240,.55);}
+  .recruit-inner .rdot{width:9px;height:9px;border-radius:50%;background:#FF6A45;flex:none;position:relative;}
+  .recruit-inner .rdot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid #FF6A45;animation:rpulse 2s ease-out infinite;}
+  @keyframes rpulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+  .recruit-inner .rtext{color:#fff;font-size:16px;font-weight:700;flex:1;min-width:200px;letter-spacing:-.01em;}
+  .recruit-inner .rtext small{display:block;font-size:12.5px;font-weight:500;color:#E7E9F0;opacity:.85;margin-top:2px;letter-spacing:0;}
+  .recruit-inner .rbtn{display:inline-flex;align-items:center;gap:7px;background:#fff;color:#3A32A0;
+    font-weight:700;font-size:14px;padding:11px 20px;border-radius:100px;white-space:nowrap;transition:transform .18s;}
+  .recruit-inner .rbtn:hover{transform:translateY(-2px);}
+  @media(max-width:600px){.recruit-inner{padding:16px 18px}.recruit-inner .rbtn{width:100%;justify-content:center}}
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
 
@@ -112,6 +125,17 @@
 </style>
 </head>
 <body>
+
+<!-- RECRUIT STRIP -->
+<div class="recruit-strip reveal" style="margin-top:28px;">
+  <div class="recruit-inner">
+    <span class="rdot"></span>
+    <div class="rtext">지금 AI Enablement Lab 클래스 수강생을 모집하고 있어요!
+      <small>원하는 클래스를 골라 지금 바로 신청하세요.</small>
+    </div>
+    <a class="rbtn" href="https://changshininc.sharepoint.com/sites/AX_TEST2/SitePages/%ED%81%B4%EB%9E%98%EC%8A%A4-%EC%8B%A0%EC%B2%AD.aspx">수강 신청하기 &rarr;</a>
+  </div>
+</div>
 
 <!-- HUB GRID -->
 <section class="sec" id="hub">
